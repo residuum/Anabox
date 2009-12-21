@@ -91,8 +91,7 @@ function AnaBox()
 	 * @param {int} height
 	 * @return {null}
 	 */
-	this.resizeImageContainer = function(newWidth, newHeight, yOffset)
-	{
+	this.resizeImageContainer = function(newWidth, newHeight, yOffset) {
 		this.imageContainerObj.style.width = newWidth + 'px';
 		this.imageContainerObj.style.height = newHeight + 'px';
 		this.anaboxImageObj.width = newWidth;
@@ -108,12 +107,10 @@ function AnaBox()
 		// resize overlay if image too large
 		var overlayWidth = this.overlayObj.style.width;
 		var overlayHeight = this.overlayObj.style.height;
-		if (containerWidth > overlayWidth.substring(0, (overlayWidth.length - 2)))
-		{
+		if (containerWidth > overlayWidth.substring(0, (overlayWidth.length - 2))) {
 			this.overlayObj.style.width = containerWidth + 'px';
 		}
-		if ( (containerHeight + yOffset) > overlayHeight.substring(0, (overlayHeight.length - 2)))
-		{
+		if ( (containerHeight + yOffset) > overlayHeight.substring(0, (overlayHeight.length - 2))) {
 			this.overlayObj.style.height = (containerHeight + yOffset + 100) + 'px';
 		}
 	};
@@ -123,8 +120,7 @@ function AnaBox()
 	 *
 	 * @return {null}
 	 */
-	this.out = function()
-	{
+	this.out = function() {
 		this.overlayObj.style.display = "none";
 		this.anaboxObj.style.display = "none";
 	};
@@ -135,8 +131,7 @@ function AnaBox()
 	 * @constructor
 	 * @return {null}
 	 */
-	this.initialize = function()
-	{
+	this.initialize = function() {
 		this.updateImageList();
 		var overlay = document.createElement('div');
 		overlay.id = 'overlay';
@@ -190,7 +185,7 @@ function AnaBox()
 		imageDataContainer.appendChild(imageData);
 		var imageDetails = document.createElement('div');
 		imageDetails.id = 'imageDetails';
-		imageData.appendChild(imageDetails);	
+		imageData.appendChild(imageDetails);
 		var caption = document.createElement('span');
 		caption.id = 'caption';
 		imageDetails.appendChild(caption);
@@ -225,7 +220,7 @@ function AnaBox()
 		);
 		this.overlayObj.style.height = overlayHeight +'px';
 		this.overlayObj.style.width = overlayWidth +'px';
-		
+
 	};
 
 	/**
@@ -233,15 +228,11 @@ function AnaBox()
 	 *
 	 * @return {null}
 	 */
-	this.updateImageList = function()
-	{
+	this.updateImageList = function() {
 		var aElements = document.getElementsByTagName("a");
-		for (var i = 0; i < aElements.length; i++)
-		{
-			if (aElements[i].rel.match(/^anabox(\[([a-zA-Z 0-9\-_]*)\])?$/))
-			{
-				aElements[i].onclick = function()
-				{
+		for (var i = 0; i < aElements.length; i++) {
+			if (aElements[i].rel.match(/^anabox(\[([a-zA-Z 0-9\-_]*)\])?$/)) {
+				aElements[i].onclick = function() {
 					ana.popup(this);
 					return false;
 				};
@@ -255,8 +246,7 @@ function AnaBox()
 	 * @param {object} linkObj
 	 * @return {null}
 	 */
-	this.popup = function(linkObj)
-	{
+	this.popup = function(linkObj) {
 		var anaRel = linkObj.rel;
 		var anaLink = linkObj.href;
 		var anaTitle = linkObj.title;
@@ -265,25 +255,19 @@ function AnaBox()
 		this.imageSet = undefined;
 		this.imageArray = [];
 		var imageNum = 0;
-		if (anaRel.length > 6)
-		{
+		if (anaRel.length > 6) 	{
 			this.imageSet = anaRel.substr(7);
 			this.imageSet = this.imageSet.substr(0, (this.imageSet.length - 1) );
 			var aElements = document.getElementsByTagName("a");
-			for (var i = 0; i < aElements.length; i++)
-			{
-				if (aElements[i].rel == anaRel)
-				{
+			for (var i = 0; i < aElements.length; i++) {
+				if (aElements[i].rel == anaRel) {
 					this.imageArray.push([aElements[i].href, aElements[i].title]);
 				}
 			}
-			while (this.imageArray[imageNum][0] != anaLink)
-			{
+			while (this.imageArray[imageNum][0] != anaLink) {
 				imageNum++;
 			}
-		}
-		else
-		{
+		} else {
 			this.imageArray.push([anaLink, anaTitle]);
 		}
 		this.displayImage(imageNum);
@@ -295,27 +279,20 @@ function AnaBox()
 	 * @param {int} imageNum
 	 * @return {null}
 	 */
-	this.displayImage = function(imageNum)
-	{
+	this.displayImage = function(imageNum) {
 		var yScroll,
 		    xScroll,
 		    docHeight;
-		if (window.pageYOffset)
-		{
+		if (window.pageYOffset) {
    			yScroll = window.pageYOffset;
    			xScroll = window.pageXOffset;
-		}
-		else
-		{
+		} else {
 			yScroll = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
 			xScroll = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
 		}
-		if (window.innerHeight)
-		{
+		if (window.innerHeight) {
 			docHeight = window.innerHeight;
-		}
-		else
-		{
+		} else {
 			docHeight = Math.max(document.documentElement.clientHeight, document.body.clientHeight);
 		}
 		var topScroll = yScroll + (docHeight / 10);
@@ -325,55 +302,40 @@ function AnaBox()
 		this.anaboxObj.style.left = xScroll + 'px';
 		this.anaboxImageObj.style.display = 'none';
 		this.loadingObj.style.display = 'block';
-		if (imageNum === 0)
-		{
+		if (imageNum === 0) {
 			this.prevLinkObj.style.display = 'none';
-		}
-		else
-		{
-			this.prevLinkObj.onclick = function()
-			{
+		} else {
+			this.prevLinkObj.onclick = function() {
 				ana.displayImage(imageNum - 1);
 				return false;
 			};
 			this.prevLinkObj.style.display = 'block';
 		}
-		if (imageNum == (this.imageArray.length - 1))
-		{
+		if (imageNum == (this.imageArray.length - 1)) {
 			this.nextLinkObj.style.display = 'none';
-		}
-		else
-		{
-			this.nextLinkObj.onclick = function()
-			{
+		} else {
+			this.nextLinkObj.onclick = function() {
 				ana.displayImage(imageNum + 1);
 				return false;
 			};
 			this.nextLinkObj.style.display = 'block';
 		}
 		var imgPreloader = new Image();
-		imgPreloader.onload = (function()
-		{
+		imgPreloader.onload = (function() {
 			ana.anaboxImageObj.src = imgPreloader.src;
 			ana.resizeImageContainer(imgPreloader.width, imgPreloader.height, topScroll);
 			ana.anaboxImageObj.style.display = 'inline';
 			ana.loadingObj.style.display='none';
-    });
-    imgPreloader.src = this.imageArray[imageNum][0];
-		if (this.imageArray[imageNum][1])
-		{
+		});
+		imgPreloader.src = this.imageArray[imageNum][0];
+		if (this.imageArray[imageNum][1]) {
 			this.captionObj.firstChild.data = this.imageArray[imageNum][1];
-		}
-		else
-		{
+		} else {
 			this.captionObj.firstChild.data = '';
 		}
-		if (this.imageArray.length > 1)
-		{
+		if (this.imageArray.length > 1) {
 			this.numberDisplayObj.firstChild.data = labelImage + ' ' + (imageNum + 1) + ' ' + labelOf + ' ' + this.imageArray.length;
-		}
-		else
-		{
+		} else {
 			this.numberDisplayObj.firstChild.data = '';
 		}
 	};
@@ -387,8 +349,7 @@ function AnaBox()
  * @param {function} f2
  * @return {function}
  */
-function chainFunctions(f1, f2)
-{
+function chainFunctions(f1, f2) {
     return typeof f1 !== 'function' ? f2 : function() {
         var r1 = f1.apply(this, arguments),
             r2 = f2.apply(this, arguments);
@@ -402,18 +363,12 @@ function chainFunctions(f1, f2)
  * @param {function} func
  * @return {null}
  */
-function addOnloadListener(func)
-{
-	if(window.addEventListener)
-	{
+function addOnloadListener(func) {
+	if(window.addEventListener) {
 		window.addEventListener('load', func, false);
-	}
-	else if(window.attachEvent)
-	{
+	} else if(window.attachEvent) {
 		window.attachEvent('onload', func);
-	}
-	else
-	{
+	} else {
 		window.onload = chainFunctions(window.onload, func);
 	}
 }

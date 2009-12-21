@@ -42,12 +42,8 @@
 	- popup (displays overlay, displayImage)
 	- displayImage (display the image, prev/nextLink, title etc., resizeImageContainer)
 
-	onload event handler for external js-File
-	- chain()
-	- addOnLoadListener()
-
-	Function Calls
-	- addOnLoadListener()
+	Global function call
+	- attach Anabox to window.onload
 ----------------------------------------------------------------------------------- */
 
 /**
@@ -343,34 +339,22 @@ function AnaBox()
 }
 
 /**
- * chains two functions
- *
- * @param {function} f1
- * @param {function} f2
- * @return {function}
+ * adds Anabox initialization to body onload attribute
  */
-function chainFunctions(f1, f2) {
-    return typeof f1 !== 'function' ? f2 : function() {
-        var r1 = f1.apply(this, arguments),
-            r2 = f2.apply(this, arguments);
-        return typeof r1 === 'undefined' ? r2 : (r1 && r2);
-    };
+if (window.addEventListener) {
+	window.addEventListener('load', function() {
+		ana = new AnaBox();
+	}, false);
+} else if (window.attachEvent) {
+	window.attachEvent('onload', function() {
+		ana = new AnaBox();
+	});
+} else if (typeof window.onload === 'undefined'){
+	window.onload = function() {
+		ana = new AnaBox();
+	};
+} else {
+	window.onload = window.onload && function() {
+		ana = new AnaBox();
+	};
 }
-
-/**
- * adds function to body onload attribute
- *
- * @param {function} func
- * @return {null}
- */
-function addOnloadListener(func) {
-	if(window.addEventListener) {
-		window.addEventListener('load', func, false);
-	} else if(window.attachEvent) {
-		window.attachEvent('onload', func);
-	} else {
-		window.onload = chainFunctions(window.onload, func);
-	}
-}
-
-addOnloadListener(function() { ana = new AnaBox(); });

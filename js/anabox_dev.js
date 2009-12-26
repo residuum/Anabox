@@ -251,7 +251,7 @@ function AnaBox()
 		this.imageSet = undefined;
 		this.imageArray = [];
 		var imageNum = 0;
-		if (anaRel.length > 6) 	{
+		if (anaRel.length > 6) {
 			this.imageSet = anaRel.substr(7);
 			this.imageSet = this.imageSet.substr(0, (this.imageSet.length - 1) );
 			var aElements = document.getElementsByTagName("a");
@@ -349,7 +349,7 @@ if (window.addEventListener) {
 	window.attachEvent('onload', function() {
 		ana = new AnaBox();
 	});
-} else if (typeof window.onload === 'undefined'){
+} else if (typeof window.onload === 'undefined') {
 	window.onload = function() {
 		ana = new AnaBox();
 	};

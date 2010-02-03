@@ -1,5 +1,5 @@
 /* -----------------------------------------------------------------------------------
-	AnaBox v 0.2
+	AnaBox v 0.2.1
 	by Thomas Mayer - http://ix.residuum.org/anabox.html
 	License: MIT license, i.e. more or less: Do As Thou Wilst (with the code) Shall
 	Be The Whole of The Law.
@@ -54,8 +54,7 @@
  * @copyright Thomas Mayer 2009
  *
  **/
-function AnaBox()
-{
+function AnaBox() {
 	// configurables
 	var fileLoadingImage = '/images/loading.gif',
 		fileBottomNavCloseImage = '/images/closelabel.gif',
@@ -237,11 +236,9 @@ function AnaBox()
 			i;
 		for (i = 0; i < aElements.length; i += 1) {
 			if (aElements[i].rel.match(/^anabox(\[([a-zA-Z 0-9\-_]*)\])?$/)) {
-				function () {
-					aElements[i].onclick = function () {
-						window.ana.popup(this);
-						return false;
-					};
+				aElements[i].onclick = function () {
+					window.ana.popup(this);
+					return false;
 				};
 			}
 		}
@@ -367,7 +364,7 @@ if (window.addEventListener) {
 	});
 } else if (typeof window.onload === 'undefined') {
 	window.onload = function () {
-		ana = new AnaBox();
+		window.ana = new AnaBox();
 	};
 } else {
 	window.onload = window.onload && function () {

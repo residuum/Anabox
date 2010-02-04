@@ -14,15 +14,15 @@
 	#prevLink, #nextLink{width:49%; height:100%; background-image: url(data:image/gif;base64,AAAA); /* Trick IE into showing hover */ display:block;}
 	#prevLink {left:0; float:left;}
 	#nextLink {right:0; float:right;}
-	#prevLink:hover, #prevLink:visited:hover {background:url(/images/prevlabel.gif) left top no-repeat;}
-	#nextLink:hover, #nextLink:visited:hover {background:url(/images/nextlabel.gif) right top no-repeat;}
+	#prevLink:hover, #prevLink:visited:hover {background:url(../images/prevlabel.gif) left top no-repeat;}
+	#nextLink:hover, #nextLink:visited:hover {background:url(../images/nextlabel.gif) right top no-repeat;}
 
 	#imageDataContainer {font:10px Verdana, Helvetica, sans-serif; background-color:#fff; margin:0 auto; line-height:1.4em; overflow:auto; width:250px;}
 
 	#imageData {padding:0 10px; color:#000;}
-	#imageData #imageDetails {width:70%; float:left; text-align:left;}	
+	#imageData #imageDetails {width:70%; float:left; text-align:left;}
 	#imageData #caption {font-weight:bold;}
-	#imageData #numberDisplay {display:block; clear:left; padding-bottom:7px;}			
+	#imageData #numberDisplay {display:block; clear:left; padding-bottom:7px;}
 	#imageData #bottomNavClose {width:18px; float:right;  padding-bottom:5px;outline:none;}
 
 	#overlay {position:absolute; top:0; left:0; z-index:90; width:100%; background-color:#000; opacity:0.8; -moz-opacity: 0.8; filter: alpha(opacity = 80); -khtml-opacity: 0.8;}

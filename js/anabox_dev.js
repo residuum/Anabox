@@ -54,10 +54,10 @@
  * @copyright Thomas Mayer 2009
  *
  **/
- (function() {
-	 anabox = function () {
+(function () {
+	var anabox = function () {
 
-	 	// configurables
+		// configurables
 		var fileLoadingImage = '/images/loading.gif',
 			fileBottomNavCloseImage = '/images/closelabel.gif',
 			borderSize = 10,
@@ -86,9 +86,10 @@
 		/**
 		 * resizes image container
 		 *
-		 * @param {int} width
-		 * @param {int} height
-		 * @return {null}
+		 * @param {int} newWidth new width of image container
+		 * @param {int} newHeight new height of image container
+		 * @param {int} yOffset offset of the viewport in vertical direction
+		 * @type null
 		 */
 		self.resizeImageContainer = function (newWidth, newHeight, yOffset) {
 			imageContainerObj.style.width = newWidth + 'px';
@@ -117,7 +118,7 @@
 		/**
 		 * sets display of overlay and anabox to none
 		 *
-		 * @return {null}
+		 * @type null
 		 */
 		self.out = function () {
 			overlayObj.style.display = "none";
@@ -128,7 +129,7 @@
 		 * updateImageList, creates DOM for anabox
 		 *
 		 * @constructor
-		 * @return {null}
+		 * @type null
 		 */
 		self.initialize = function () {
 			self.updateImageList();
@@ -233,7 +234,7 @@
 		/**
 		 * selects a-Elements, adds onclick attributes
 		 *
-		 * @return {null}
+		 * @type null
 		 */
 		self.updateImageList = function () {
 			var aElements = document.getElementsByTagName("a"),
@@ -251,8 +252,8 @@
 		/**
 		 * displays overlay, fills imageSet, imageArray, calls displayImage
 		 *
-		 * @param {object} linkObj
-		 * @return {null}
+		 * @param {object} linkObj anchor element with information to display
+		 * @type null
 		 */
 		self.popup = function (linkObj) {
 			var anaRel = linkObj.rel,
@@ -287,8 +288,8 @@
 		/**
 		 * displays image and information, resizes container
 		 *
-		 * @param {int} imageNum
-		 * @return {null}
+		 * @param {int} imageNum number of the image in a group of images to display
+		 * @type null
 		 */
 		self.displayImage = function (imageNum) {
 			var yScroll,
@@ -334,12 +335,12 @@
 				nextLinkObj.style.display = 'block';
 			}
 			imgPreloader = new Image();
-			imgPreloader.onload = (function () {
+			imgPreloader.onload = function () {
 				anaboxImageObj.src = imgPreloader.src;
 				self.resizeImageContainer(imgPreloader.width, imgPreloader.height, topScroll);
 				anaboxImageObj.style.display = 'inline';
 				loadingObj.style.display = 'none';
-			});
+			};
 			imgPreloader.src = imageArray[imageNum][0];
 			if (imageArray[imageNum][1]) {
 				captionObj.firstChild.data = imageArray[imageNum][1];
@@ -376,4 +377,4 @@
 			window.anabox.initialize();
 		};
 	}
-})();
+}());

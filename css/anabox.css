@@ -5,7 +5,6 @@
 	#anabox a img {border:none;}
 
 	#outerImageContainer {position:relative; background-color:#fff; width:250px; height:250px; margin:0 auto;}
-	#imageContainer {padding:10px;}
 
 	#loading {position:absolute; top:40%; left:0%; height:25%; width:100%; text-align:center; line-height:0;}
 	#hoverNav {position:absolute; top:0; left:0; height:100%; width:100%; z-index:10;}
@@ -20,9 +19,9 @@
 	#imageDataContainer {font:10px Verdana, Helvetica, sans-serif; background-color:#fff; margin:0 auto; line-height:1.4em; overflow:auto; width:250px;}
 
 	#imageData {padding:0 10px; color:#000;}
-	#imageData #imageDetails {width:70%; float:left; text-align:left;}	
+	#imageData #imageDetails {width:70%; float:left; text-align:left;}
 	#imageData #caption {font-weight:bold;}
-	#imageData #numberDisplay {display:block; clear:left; padding-bottom:7px;}			
+	#imageData #numberDisplay {display:block; clear:left; padding-bottom:7px;}
 	#imageData #bottomNavClose {width:18px; float:right;  padding-bottom:5px;outline:none;}
 
 	#overlay {position:absolute; top:0; left:0; z-index:90; width:100%; background-color:#000; opacity:0.8; -moz-opacity: 0.8; filter: alpha(opacity = 80); -khtml-opacity: 0.8;}

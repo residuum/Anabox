@@ -56,8 +56,8 @@
  **/
 function AnaBox() {
 	// configurables
-	var fileLoadingImage = '/images/loading.gif',
-		fileBottomNavCloseImage = '/images/closelabel.gif',
+	var fileLoadingImage = 'images/loading.gif',
+		fileBottomNavCloseImage = 'images/close.gif',
 		borderSize = 10,
 		labelImage = "Image",
 		labelOf = "of",
@@ -179,6 +179,7 @@ function AnaBox() {
 		this.imageContainerObj = imageContainer;
 		anaboxImage.id = 'anaboxImage';
 		imageContainer.appendChild(anaboxImage);
+		imageContainer.style.padding = borderSize + 'px';
 		this.anaboxImageObj = anaboxImage;
 		hoverNav.id = 'hoverNav';
 		imageContainer.appendChild(hoverNav);
@@ -193,7 +194,7 @@ function AnaBox() {
 		loading.id = 'loading';
 		imageContainer.appendChild(loading);
 		this.loadingObj = loading;
-		loadingImage.src = 'images/loading.gif';
+		loadingImage.src = fileLoadingImage;
 		loading.appendChild(loadingImage);
 		imageDataContainer.id = 'imageDataContainer';
 		anabox.appendChild(imageDataContainer);
@@ -219,7 +220,7 @@ function AnaBox() {
 			return false;
 		};
 		bottomNav.appendChild(bottomNavClose);
-		closeImage.src = 'images/close.gif';
+		closeImage.src = fileBottomNavCloseImage;
 		bottomNavClose.appendChild(closeImage);
 		this.overlayObj.style.height = overlayHeight + 'px';
 		this.overlayObj.style.width = overlayWidth + 'px';

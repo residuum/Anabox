@@ -58,8 +58,8 @@
 	var anabox = function () {
 
 		// configurables
-		var fileLoadingImage = '/images/loading.gif',
-			fileBottomNavCloseImage = '/images/closelabel.gif',
+		var fileLoadingImage = 'images/loading.gif',
+			fileBottomNavCloseImage = 'images/close.gif',
 			borderSize = 10,
 			labelImage = "Image",
 			labelOf = "of",
@@ -182,6 +182,7 @@
 			imageContainer.id = 'imageContainer';
 			outerImageContainer.appendChild(imageContainer);
 			imageContainerObj = imageContainer;
+			imageContainer.style.padding = borderSize + 'px';
 			anaboxImage.id = 'anaboxImage';
 			imageContainer.appendChild(anaboxImage);
 			anaboxImageObj = anaboxImage;
@@ -198,7 +199,7 @@
 			loading.id = 'loading';
 			imageContainer.appendChild(loading);
 			loadingObj = loading;
-			loadingImage.src = 'images/loading.gif';
+			loadingImage.src = fileLoadingImage;
 			loading.appendChild(loadingImage);
 			imageDataContainer.id = 'imageDataContainer';
 			anabox.appendChild(imageDataContainer);
@@ -224,7 +225,7 @@
 				return false;
 			};
 			bottomNav.appendChild(bottomNavClose);
-			closeImage.src = 'images/close.gif';
+			closeImage.src = fileBottomNavCloseImage;
 			bottomNavClose.appendChild(closeImage);
 			overlayObj.style.height = overlayHeight + 'px';
 			overlayObj.style.width = overlayWidth + 'px';

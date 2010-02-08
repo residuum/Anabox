@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------------
 	AnaBox v 0.3
-	by Thomas Mayer - http://ix.residuum.org/anabox.html
+	by Thomas Mayer - http://ix.residuum.org/anabox/anabox.html
 	License: MIT license, i.e. more or less: Do As Thou Wilst (with the code) Shall
 	Be The Whole of The Law.
 

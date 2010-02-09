@@ -4,7 +4,7 @@
 	License: MIT license, i.e. more or less: Do As Thou Wilst (with the code) Shall
 	Be The Whole of The Law.
 
-	Copyright (c) 2009 Thomas Mayer
+	Copyright (c) 2010 Thomas Mayer
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to deal
@@ -170,11 +170,9 @@
 				return false;
 			};
 			overlay.style.display = 'none';
-			document.body.appendChild(overlay);
 			overlayObj = overlay;
 			anabox.id = 'anabox';
 			anabox.style.display = 'none';
-			document.body.appendChild(anabox);
 			anaboxObj = anabox;
 			outerImageContainer.id = 'outerImageContainer';
 			anabox.appendChild(outerImageContainer);
@@ -229,7 +227,8 @@
 			bottomNavClose.appendChild(closeImage);
 			overlayObj.style.height = overlayHeight + 'px';
 			overlayObj.style.width = overlayWidth + 'px';
-
+			document.body.appendChild(overlay);
+			document.body.appendChild(anabox);
 		};
 
 		/**
@@ -239,8 +238,9 @@
 		 */
 		self.updateImageList = function () {
 			var aElements = document.getElementsByTagName("a"),
-				i;
-			for (i = 0; i < aElements.length; i += 1) {
+				i,
+				len;
+			for (i = 0, len = aElements.length; i < len; i += 1) {
 				if (aElements[i].rel.match(/^anabox(\[([a-zA-Z 0-9\-_]*)\])?$/)) {
 					aElements[i].onclick = function () {
 						self.popup(this);
@@ -262,7 +262,8 @@
 				anaTitle = linkObj.title,
 				imageNum = 0,
 				aElements,
-				i;
+				i,
+				len;
 			overlayObj.style.display = 'block';
 			anaboxObj.style.display = 'block';
 			// clear imageSet/Array
@@ -272,7 +273,7 @@
 				imageSet = anaRel.substr(7);
 				imageSet = imageSet.substr(0, (imageSet.length - 1));
 				aElements = document.getElementsByTagName("a");
-				for (i = 0; i < aElements.length; i += 1) {
+				for (i = 0, len = aElements.length; i < len; i += 1) {
 					if (aElements[i].rel === anaRel) {
 						imageArray.push([aElements[i].href, aElements[i].title]);
 					}
@@ -297,7 +298,8 @@
 				xScroll,
 				docHeight,
 				topScroll,
-				imgPreloader;
+				imgPreloader,
+				len;
 			if (window.pageYOffset) {
 				yScroll = window.pageYOffset;
 				xScroll = window.pageXOffset;
@@ -326,7 +328,8 @@
 				};
 				prevLinkObj.style.display = 'block';
 			}
-			if (imageNum === (imageArray.length - 1)) {
+			len = imageArray.length;
+			if (imageNum === (len - 1)) {
 				nextLinkObj.style.display = 'none';
 			} else {
 				nextLinkObj.onclick = function () {
@@ -348,8 +351,8 @@
 			} else {
 				captionObj.firstChild.data = '';
 			}
-			if (imageArray.length > 1) {
-				numberDisplayObj.firstChild.data = labelImage + ' ' + (imageNum + 1) + ' ' + labelOf + ' ' + imageArray.length;
+			if (len > 1) {
+				numberDisplayObj.firstChild.data = labelImage + ' ' + (imageNum + 1) + ' ' + labelOf + ' ' + len;
 			} else {
 				numberDisplayObj.firstChild.data = '';
 			}

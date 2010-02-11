@@ -1,0 +1,37 @@
+Anabox is yet another lightbox clone that only needs Javascript, but
+does not use any AJAX framework and is therefore extremely lightweight.
+It incorporates the following features:
+
+    * Image captions
+    * Grouping of images
+    * Linking to the image, if no JavaScript enabled or incompatible web
+      browser (graceful degradation)
+
+How to use Anabox
+
+    * Include anabox.js and anabox.css in any page you want to use with
+      anabox.
+    * Put the images for prevlabel.gif, nextlabel.gif, closelabel.gif
+      and loading.gif in the folder images on your webserver. You can
+      customize the location and files via editing anabox.js line 3
+      (fileLoadingImage='images/loading.gif',
+      fileBottomNavCloseImage='images/closelabel.gif';) and anabox.css
+      lines 18 and 19.
+    * Any picture you want to enable in the anabox layer, link to it via
+      <a href="imagefile" rel="anabox">linktext</a>
+    * If you want to use a caption add title="your caption" to the <a>
+      element like this: <a href="imagefile" rel="anabox"
+      title="your caption">linktext</a>
+    * If you want to group images, add [group_name] to the rel attribut
+      like this: <a href="imagefile" rel="anabox[group_name]"
+      title="your caption">linktext</a> The group name can only consist
+      of letters, numbers, underscore and hyphens and will not show up
+      anywhere (except in the markup of course).
+    * Other settings you might want to customize in anabox.js are also
+      in line 3: borderSize=10 for the size of the border around the
+      images and labelImage="Image",labelOf="of"; for image sets
+      (outputs labelImage No. labelOf pictures_in_set).
+    * For easier customization, download the uncompressed files and
+      minify the javascript yourself, e.g. with The YUI compressor. You
+      can then even check the option to reduce the file size even more
+      by obfuscating the variables.

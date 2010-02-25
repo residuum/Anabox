@@ -300,16 +300,16 @@
 				topScroll,
 				imgPreloader,
 				len;
-			if (window.pageYOffset) {
+			if (window.pageYOffset) { // Firefox
 				yScroll = window.pageYOffset;
 				xScroll = window.pageXOffset;
-			} else {
+			} else { // others
 				yScroll = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
 				xScroll = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
 			}
-			if (window.innerHeight) {
+			if (window.innerHeight) { // Firefox
 				docHeight = window.innerHeight;
-			} else {
+			} else { // others
 				docHeight = Math.max(document.documentElement.clientHeight, document.body.clientHeight);
 			}
 			topScroll = yScroll + (docHeight / 10);
@@ -364,15 +364,15 @@
 /**
  * adds Anabox initialization to body onload attribute
  */
-	if (window.addEventListener) {
+	if (window.addEventListener) { // DOM
 		window.addEventListener('load', function () {
 			window.anabox.initialize();
 		}, false);
-	} else if (window.attachEvent) {
+	} else if (window.attachEvent) { // IE
 		window.attachEvent('onload', function () {
 			window.anabox.initialize();
 		});
-	} else if (typeof window.onload === 'undefined') {
+	} else if (typeof window.onload === 'undefined') { // others
 		window.onload = function () {
 			window.anabox.initialize();
 		};
